@@ -1,18 +1,13 @@
 import LinkCard from "@/components/LinkCard";
 import Profile from "@/components/Profile";
+import { links } from "@/lib/links";
 
-// shortcut: profile and links are hardcoded, move to MongoDB when editing is needed
+// shortcut: profile is hardcoded, move to MongoDB when editing is needed
 const profile = {
   name: "김유나",
   bio: "풀스택 개발자 | 요즘에는 AI 개발에 관심이 많아요!",
   imageUrl: "/profile.jpg",
 };
-
-const links = [
-  { title: "🎀  인스타", url: "https://www.instagram.com/yuna_au" },
-  { title: "👀  블로그", url: "https://blog.naver.com/kimyuna03140" },
-  { title: "🐱  깃허브", url: "https://github.com/yuna0l" },
-];
 
 export default function Home() {
   return (
@@ -20,8 +15,8 @@ export default function Home() {
       <Profile {...profile} />
       <ul className="mt-10 flex w-full flex-col gap-3.5">
         {links.map((link) => (
-          <li key={link.url}>
-            <LinkCard {...link} />
+          <li key={link.id}>
+            <LinkCard title={link.title} url={`/go/${link.id}`} />
           </li>
         ))}
       </ul>
